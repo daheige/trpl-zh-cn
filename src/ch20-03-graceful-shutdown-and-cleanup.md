@@ -1,6 +1,6 @@
 ## 优雅停机与清理
 
-> [ch20-03-graceful-shutdown-and-cleanup.md](https://github.com/rust-lang/book/blob/master/src/ch20-03-graceful-shutdown-and-cleanup.md)
+> [ch20-03-graceful-shutdown-and-cleanup.md](https://github.com/rust-lang/book/blob/main/src/ch20-03-graceful-shutdown-and-cleanup.md)
 > <br>
 > commit 9a5a1bfaec3b7763e1bcfd31a2fb19fe95183746
 
@@ -314,7 +314,7 @@ fn main() {
 }
 
 fn handle_connection(mut stream: TcpStream) {
-    let mut buffer = [0; 512];
+    let mut buffer = [0; 1024];
     stream.read(&mut buffer).unwrap();
 
     let get = b"GET / HTTP/1.1\r\n";

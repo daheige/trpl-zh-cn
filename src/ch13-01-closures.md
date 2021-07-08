@@ -1,6 +1,6 @@
 ## 闭包：可以捕获环境的匿名函数
 
-> [ch13-01-closures.md](https://github.com/rust-lang/book/blob/master/src/ch13-01-closures.md)
+> [ch13-01-closures.md](https://github.com/rust-lang/book/blob/main/src/ch13-01-closures.md)
 > <br>
 > commit 26565efc3f62d9dacb7c2c6d0f5974360e459493
 
@@ -219,7 +219,7 @@ fn generate_workout(intensity: u32, random_number: u32) {
 
 <span class="caption">示例 13-6：调用定义的 `expensive_closure`</span>
 
-现在耗时的计算只在一个地方被调用，并只会在需要结果的时候执行改代码。
+现在耗时的计算只在一个地方被调用，并只会在需要结果的时候执行该代码。
 
 然而，我们又重新引入了示例 13-3 中的问题：仍然在第一个 `if` 块中调用了闭包两次，这调用了慢计算代码两次而使得用户需要多等待一倍的时间。可以通过在 `if` 块中创建一个本地变量存放闭包调用的结果来解决这个问题，不过闭包可以提供另外一种解决方案。我们稍后会讨论这个方案，不过目前让我们首先讨论一下为何闭包定义中和所涉及的 trait 中没有类型注解。
 
@@ -296,7 +296,7 @@ error[E0308]: mismatched types
 
 为了让结构体存放闭包，我们需要指定闭包的类型，因为结构体定义需要知道其每一个字段的类型。每一个闭包实例有其自己独有的匿名类型：也就是说，即便两个闭包有着相同的签名，他们的类型仍然可以被认为是不同。为了定义使用闭包的结构体、枚举或函数参数，需要像第十章讨论的那样使用泛型和 trait bound。
 
-`Fn` 系列 trait 由标准库提供。所有的闭包都实现了 trait `Fn`、`FnMut` 或 `FnOnce` 中的一个。在 [“闭包会捕获其环境”](#capturing-the-environment-with-closures) 部分我们会讨论这些 trait 的区别；在这个例子中可以使用 `Fn` trait。
+`Fn` 系列 trait 由标准库提供。所有的闭包都实现了 trait `Fn`、`FnMut` 或 `FnOnce` 中的一个。在 [“闭包会捕获其环境”](#闭包会捕获其环境) 部分我们会讨论这些 trait 的区别；在这个例子中可以使用 `Fn` trait。
 
 为了满足 `Fn` trait bound 我们增加了代表闭包所必须的参数和返回值类型的类型。在这个例子中，闭包有一个 `u32` 的参数并返回一个 `u32`，这样所指定的 trait bound 就是 `Fn(u32) -> u32`。
 
